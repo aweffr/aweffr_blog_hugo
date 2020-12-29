@@ -68,7 +68,7 @@ draft: false
 3. [OSTEP](http://pages.cs.wisc.edu/~remzi/OSTEP/)，工作之前囫囵吞枣地看过，这个得再看一遍。
 4. [ICS, a.k.a. CSAPP](https://ipads.se.sjtu.edu.cn/courses/ics/schedule.shtml)
 5. TiDB的培训lab [TinySQL](https://github.com/tidb-incubator/tinysql)
-6. ...还有很多很好的Mooc, 就不列上来了，上面5个能看完我给自己发S卡🛫 XD️
+6. ...还有很多很好的Mooc, 就不列上来了，上面5个能看完我给自己发S卡。
 
 坑挖了不少，慢慢填。
 
