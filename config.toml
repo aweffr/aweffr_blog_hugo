@@ -1,4 +1,33 @@
+author = "aweffr"
 baseURL = "https://aweffr.com/"
-languageCode = "zh-cn"
+languageCode = "zh-CN"
 title = "aweffr's blog"
 theme = "maupassant"
+summaryLength = 140
+
+[params]
+author = "aweffr"
+subtitle = "Stay Hungry, Stay Foolish."
+
+[params.cc]
+    name = "知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议"
+    link = "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+
+## 配置代码高亮
+[markup]
+  [markup.highlight]
+    lineNos = true
+    style = "github"
+
+[menu]
+  [[menu.main]]
+    identifier = "tools"
+    name = "工具"
+    url = "/tools/"
+    weight = 2
+
+[params.utteranc]
+  enable = true
+  repo = "aweffr/aweffr_blog_hugo" ##换成自己得
+  issueTerm = "pathname"
+  theme = "github-light"
