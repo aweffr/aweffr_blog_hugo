@@ -64,7 +64,7 @@ draft: false
 按想学的动力排序:
 1. [iOS cs193p](https://cs193p.sites.stanford.edu/), 这个属于工作需要。
 2. [《网络搜索原理》 陈光,北邮](https://www.bilibili.com/video/av67367419/)，搜索系统的演化，当中system design的思考有点意思。
-3. [OSTEP](http://pages.cs.wisc.edu/~remzi/OSTEP/)
+3. [OSTEP](http://pages.cs.wisc.edu/~remzi/OSTEP/)，工作之前囫囵吞枣地看过，这个得再看一遍。
 4. [ICS, a.k.a. CSAPP](https://ipads.se.sjtu.edu.cn/courses/ics/schedule.shtml)
 5. TiDB的培训lab [TinySQL](https://github.com/tidb-incubator/tinysql)
 6. ...还有很多很好的Mooc, 就不列上来了，上面5个能看完我给自己发S卡🛫 XD️
