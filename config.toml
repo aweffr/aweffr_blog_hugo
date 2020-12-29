@@ -1,0 +1,4 @@
+baseURL = "http://aweffr.com/"
+languageCode = "zh-cn"
+title = "aweffr's blog"
+theme = "maupassant"
