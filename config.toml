@@ -4,6 +4,7 @@ languageCode = "zh-CN"
 title = "aweffr's blog"
 theme = "maupassant"
 summaryLength = 140
+googleAnalytics = "G-NM0RZGXWL6"
 
 [params]
 author = "aweffr"
