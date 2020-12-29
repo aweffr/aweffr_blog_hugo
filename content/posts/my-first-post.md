@@ -37,7 +37,8 @@ draft: false
 - Seafile这个网盘的一些使用/二次开发经历
 
 - 运维层面的一些自用cheetsheet:
-    - Linux云主机部署的开局套路(公司的docker平台)
+    - Linux云主机部署的开局套路
+    - Docker部署的常用套路
     - yum /apt / docker / iptables / netstat / nc, iftop / ssh系列
     - Nginx 配置
     - Mysql 的 CLI 一些常用的命令
