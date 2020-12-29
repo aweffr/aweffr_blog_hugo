@@ -13,7 +13,9 @@
                         {{ .Site.Title }}
                     </a>
                 {{ end }}
-                {{ with .Site.Params.subtitle }}<p class="description">{{ . }}</p>{{ end }}
+                {{ with .Site.Params.subtitle }}
+                    <p class="description"><a href="https://news.stanford.edu/2005/06/14/jobs-061505/" target="_blank">{{ . }}</a></p>
+                {{ end }}
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
