@@ -6,8 +6,6 @@ categories: ["Ops"]
 summary: "如何延长ssh云服务器的静默断开时间"
 ---
 
-# Linux下，延长SSH的连接超时时间
-
 修改配置文件: `vim /etc/ssh/sshd_config`
 
 每60秒往客户端发送会话请求, 保持连接, 最多重试5次。

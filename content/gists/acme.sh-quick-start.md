@@ -64,7 +64,7 @@ server {
 然后签发证书
 
 ```bash
-acme.sh --issue -d aweffr.com -d www.aweffr.com -d git.aweffr.com -w /var/www/le_root
+acme.sh --issue -d aweffr.com -d www.aweffr.com -d git.aweffr.com -w /var/www/le_root --keylength ec-256
 
 # ...
 # [Fri 01 Jan 2021 12:21:40 AM CST] Cert success.
@@ -78,7 +78,7 @@ acme.sh --issue -d aweffr.com -d www.aweffr.com -d git.aweffr.com -w /var/www/le
 然后告诉acme.sh如何install这个cert，它就会定时拷贝文件到/etc/nginx目录, 并自动reload nginx。
 ```bash
 mkdir -p /etc/nginx/certs/aweffr.com
-acme.sh --install-cert -d aweffr.com --cert-file /etc/nginx/certs/aweffr.com/cert --key-file /etc/nginx/certs/aweffr.com/key --fullchain-file /etc/nginx/certs/aweffr.com/fullchain --reloadcmd "systemctl reload nginx.service"
+acme.sh --install-cert --ecc -d aweffr.com --cert-file /etc/nginx/certs/aweffr.com/cert --key-file /etc/nginx/certs/aweffr.com/key --fullchain-file /etc/nginx/certs/aweffr.com/fullchain --reloadcmd "systemctl reload nginx.service"
 ```
 
 生成 dbparam:
