@@ -22,10 +22,16 @@ subtitle = "Stay Hungry. Stay Foolish."
 
 [menu]
   [[menu.main]]
+    identifier = "Gists"
+    name = "Gists"
+    url = "/gists/"
+    weight = 2
+  [[menu.main]]
     identifier = "tools"
     name = "工具"
     url = "/tools/"
-    weight = 2
+    weight = 3
+
 
 [params.utteranc]
   enable = true
