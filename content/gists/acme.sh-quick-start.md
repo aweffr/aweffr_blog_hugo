@@ -67,13 +67,14 @@ server {
 acme.sh --issue -d aweffr.com -d www.aweffr.com -d git.aweffr.com -w /var/www/le_root --keylength ec-256
 
 # ...
-# [Fri 01 Jan 2021 12:21:40 AM CST] Cert success.
-# [Fri 01 Jan 2021 12:21:40 AM CST] Your cert is in  /root/.acme.sh/aweffr.com/aweffr.com.cer
-# [Fri 01 Jan 2021 12:21:40 AM CST] Your cert key is in  /root/.acme.sh/aweffr.com/aweffr.com.key
-# [Fri 01 Jan 2021 12:21:40 AM CST] The intermediate CA cert is in  /root/.acme.sh/aweffr.com/ca.cer
-# [Fri 01 Jan 2021 12:21:40 AM CST] And the full chain certs is there:  /root/.acme.sh/aweffr.com/fullchain.cer
+# [Fri 01 Jan 2021 12:51:46 AM CST] Cert success.
+# ...
+# [Fri 01 Jan 2021 12:51:46 AM CST] Your cert is in  /root/.acme.sh/aweffr.com_ecc/aweffr.com.cer
+# [Fri 01 Jan 2021 12:51:46 AM CST] Your cert key is in  /root/.acme.sh/aweffr.com_ecc/aweffr.com.key
+# [Fri 01 Jan 2021 12:51:46 AM CST] The intermediate CA cert is in  /root/.acme.sh/aweffr.com_ecc/ca.cer
+# [Fri 01 Jan 2021 12:51:46 AM CST] And the full chain certs is there:  /root/.acme.sh/aweffr.com_ecc/fullchain.cer
 ```
-实际签发就是 aweffr.com 一张证书，里面dns记录包含aweffr.com, www.aweffr.com, git.aweffr.com。
+实际签发就是 aweffr.com 一张证书，里面dns记录包含 aweffr.com, www.aweffr.com, git.aweffr.com。
 
 然后告诉acme.sh如何install这个cert，它就会定时拷贝文件到/etc/nginx目录, 并自动reload nginx。
 ```bash
@@ -83,7 +84,7 @@ acme.sh --install-cert --ecc -d aweffr.com --cert-file /etc/nginx/certs/aweffr.c
 
 生成 dbparam:
 ```bash
-openssl dhparam -dsaparam -out /etc/nginx/certs/aweffr.com/dhparam.pem 4096
+openssl dhparam -dsaparam -out /etc/nginx/certs/aweffr.com/dhparam.pem 2048
 ```
 
 最后往nginx的site里添加ssl配置
