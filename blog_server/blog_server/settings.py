@@ -41,6 +41,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+AUTH_USER_MODEL = 'auth_custom.MyUser'
+
 ALLOWED_HOSTS = []
 
 DATABASES = {
@@ -57,6 +59,7 @@ DATABASES = {
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
 
+    'auth_custom',
     'event_tracker',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -134,3 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BAIDU_APP_ID = env('BAIDU_APP_ID')
+BAIDU_APP_KEY = env('BAIDU_APP_KEY')
+BAIDU_APP_SECRET = env('BAIDU_APP_SECRET')
