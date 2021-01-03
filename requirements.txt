@@ -8,3 +8,4 @@ django-environ==0.4.5
 mysqlclient>=2.0.3
 whitenoise>=5.2.0
 Brotli>=1.0.9
+django-webpack-loader==0.7.0

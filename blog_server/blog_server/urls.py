@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from event_tracker.views import fake_vue_index
 
 urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
     path('api/event-tracker', include('event_tracker.urls')),
-    path(settings.ADMIN_URL + 'api/auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path(settings.ADMIN_URL + 'api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('', fake_vue_index),
 ]
