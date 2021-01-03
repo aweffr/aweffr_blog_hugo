@@ -11,7 +11,7 @@ class HealthSerializer(serializers.ModelSerializer):
 
 class EventSerializer(serializers.ModelSerializer):
     type = serializers.ChoiceField(choices=Event.CHOICES_TYPE)
-    health = HealthSerializer(many=False)
+    health = HealthSerializer(many=False, allow_null=True)
 
     def create(self, validated_data):
         if validated_data['type'] == Event.HEALTH:

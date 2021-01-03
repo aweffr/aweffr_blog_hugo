@@ -2,6 +2,14 @@
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% if DEBUG %}
+        <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" rel="stylesheet">
+    {% else %}
+        <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+    {% endif %}
+
     {% render_bundle 'chunk-vendors' 'css' %}
     {% render_bundle 'app' 'css' %}
 </head>
