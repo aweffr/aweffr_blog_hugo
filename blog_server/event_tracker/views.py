@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import HttpRequest
 from django.shortcuts import render
 from rest_framework import viewsets
@@ -17,4 +18,4 @@ class EventViewSet(viewsets.ModelViewSet):
 
 
 def fake_vue_index(request: HttpRequest):
-    return render(request, 'index_vue.html')
+    return render(request, 'index_vue.html', {'debug': settings.DEBUG})

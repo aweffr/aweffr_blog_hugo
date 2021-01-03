@@ -44,6 +44,10 @@ if not DEBUG:
 AUTH_USER_MODEL = 'auth_custom.MyUser'
 
 ALLOWED_HOSTS = []
+if not DEBUG:
+    ALLOWED_HOSTS = [
+        '*'
+    ]
 
 DATABASES = {
     'default': {
@@ -73,7 +77,7 @@ INSTALLED_APPS = [
 ]
 
 STATICFILES_DIRS = (
-    BASE_DIR / 'frontend',
+    BASE_DIR / 'frontend' / 'dist',
 )
 
 if DEBUG:
@@ -84,7 +88,7 @@ else:
 WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'dist/',  # must end with slash
+        'BUNDLE_DIR_NAME': 'webpack_bundles/',  # must end with slash
         'STATS_FILE': BASE_DIR / 'frontend' / webpack_filename,
         'POLL_INTERVAL': 0.1,
         'TIMEOUT': None,
@@ -165,3 +169,17 @@ STATIC_URL = '/static/'
 BAIDU_APP_ID = env('BAIDU_APP_ID')
 BAIDU_APP_KEY = env('BAIDU_APP_KEY')
 BAIDU_APP_SECRET = env('BAIDU_APP_SECRET')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+}

@@ -4,19 +4,21 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% if DEBUG %}
+    {% if debug %}
         <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" rel="stylesheet">
     {% else %}
         <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
     {% endif %}
 
-    {% render_bundle 'chunk-vendors' 'css' %}
-    {% render_bundle 'app' 'css' %}
+    {% render_bundle 'main' 'css' %}
 </head>
 <body>
-<div id="app"></div>
-{% render_bundle 'chunk-vendors' 'js' %}
-{% render_bundle 'app' 'js' %}
+<div id="root"></div>
+{% if not debug %}
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.1/umd/react.production.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
+{% endif %}
+{% render_bundle 'main' 'js' %}
 </body>
 </head>
 </html>
