@@ -1,0 +1,35 @@
+# deploy.yml
+name: "deploy-to-my-server"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: "setup hugo"
+        uses: "peaceiris/actions-hugo@v2"
+        with:
+          hugo-version: '0.79.0'
+      - uses: actions/checkout@master
+      - name: "build"
+        run: "hugo --minify"
+      - name: "ssh deploy"
+        uses: easingthemes/ssh-deploy@v2.1.6
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          ARGS: '-avz'
+          TARGET: '/var/www/aweffr_blog_hugo/public'
+      - name: "restart gunicorn"
+        uses: webfactory/ssh-agent@v0.5.2
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: "setup knownhosts"
+        run: ssh-keyscan aweffr.com >> ~/.ssh/known_hosts
+      - name: "run ssh command"
+        run: ssh aweffr@aweffr.com "sudo nginx -s reload"
