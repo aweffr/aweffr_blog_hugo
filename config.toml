@@ -1,14 +1,15 @@
-author = "aweffr"
-baseURL = "https://aweffr.com/"
+baseURL = "https://aweffr.cn/"
 languageCode = "zh-CN"
 title = "aweffr's blog"
 theme = "maupassant"
 summaryLength = 140
-googleAnalytics = "G-NM0RZGXWL6"
 
 [params]
-author = "aweffr"
 subtitle = "Stay Hungry. Stay Foolish."
+# beian = "沪ICP备18047501号-1"
+
+[author]
+  name = "ZL"
 
 [params.cc]
     name = "知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议"
@@ -20,21 +21,21 @@ subtitle = "Stay Hungry. Stay Foolish."
     lineNos = true
     style = "github"
 
-[menu]
-  [[menu.main]]
-    identifier = "Gists"
-    name = "Gists"
-    url = "/gists/"
-    weight = 2
-  [[menu.main]]
-    identifier = "tools"
-    name = "工具"
-    url = "/tools/"
-    weight = 3
+# [menu]
+#   [[menu.main]]
+#     identifier = "Gists"
+#     name = "Gists"
+#     url = "/gists/"
+#     weight = 2
+#   [[menu.main]]
+#     identifier = "tools"
+#     name = "工具"
+#     url = "/tools/"
+#     weight = 3
 
 
 [params.utteranc]
   enable = true
-  repo = "aweffr/aweffr_blog_hugo" ##换成自己得
+  repo = "aweffr/aweffr_blog_hugo"
   issueTerm = "pathname"
   theme = "github-light"
