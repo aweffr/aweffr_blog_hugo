@@ -1,8 +1,9 @@
 ---
-title: "部署 gitea"
+title: "部署 gitea 记录"
 date: 2020-12-31T23:58:29+08:00
 draft: false
-categories: ["Ops"]
+categories: ["ops"]
+summary: "在 git.aweffr.com 上部署一个私有git服务器的操作记录"
 ---
 
 安装git
@@ -47,29 +48,38 @@ server {
 
 # Default server configuration
 server {
-        server_name            git.aweffr.com;
+  server_name            git.aweffr.com;
 
-	    # SSL configuration
-        listen                  443 ssl;
-        ssl_certificate         certs/aweffr.com/fullchain;
-        ssl_certificate_key     certs/aweffr.com/key;
-        ssl_trusted_certificate certs/aweffr.com/fullchain;
+  # SSL configuration
+  listen                  443 ssl;
+  ssl_certificate         certs/aweffr.com/fullchain;
+  ssl_certificate_key     certs/aweffr.com/key;
+  ssl_trusted_certificate certs/aweffr.com/fullchain;
 
-        ssl_ciphers 'ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS';
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+  ssl_prefer_server_ciphers off;
 
-        # 启用 session resumption 提高HTTPS性能
-        # http://vincent.bernat.im/en/blog/2011-ssl-session-reuse-rfc5077.html
-        ssl_session_cache shared:SSL:50m;
-        ssl_session_timeout 1d;
-        ssl_session_tickets off;
+  ssl_session_timeout 1d;
+  ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
+  ssl_session_tickets off;
 
-        # DHE密码器的Diffie-Hellman参数, 推荐 2048 位
-        ssl_dhparam certs/aweffr.com/dhparam.pem;
+  # HSTS (ngx_http_headers_module is required) (63072000 seconds)
+  add_header Strict-Transport-Security "max-age=63072000" always;
 
-        location / {
-                proxy_set_header  X-Real-IP  $remote_addr;
-                proxy_pass http://localhost:9000;
-        }
+  # DHE密码器的Diffie-Hellman参数
+  ssl_dhparam certs/aweffr.com/dhparam.pem;
+
+  # OCSP Stapling
+  ssl_stapling           on;
+  ssl_stapling_verify    on;
+  resolver               1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 208.67.222.222 208.67.220.220 valid=60s;
+  resolver_timeout       3s;
+
+  location / {
+    proxy_set_header  X-Real-IP  $remote_addr;
+    proxy_pass http://localhost:9000;
+  }
 }
 ```
 
